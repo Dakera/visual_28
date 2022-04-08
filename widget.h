@@ -6,6 +6,9 @@
 #include <QWidget>
 #include <QtGui>
 #include <QLineEdit>
+#include <QPushButton> // если добавить в дизайн едитор кнопки, то это не нужно
+#include <QLabel> // если добавить в дизайн едитор лайблы, то это не нужно
+#include <QHBoxLayout>
 //#include <QTextCodec> // почему-то не подключает
 
 class Counter:public QLineEdit
@@ -15,15 +18,15 @@ public:
     Counter(const QString & contents, QWidget *parent = 0) :
         QLineEdit(contents,parent){} // конструктор
 signals:
-    void tick_signal();
+    void tick_signal(); // сигнальная функция
 public slots:
-    void add_one()
+    void add_one() // функция +1
     {
         QString str = text();
         int r = str.toInt();
         if (r != 0 && r%5 == 0)
-            emit tick_signal(); // emit определяется пустотой. Так что это просто вызов функции tick_signal()
-        r++;
+            emit tick_signal(); // emit определяется пустотой. Так что это просто вызов сигнальной функции tick_signal()
+        r++; // но emit как для читаемости для сигнальных функций
         str.setNum(r);
         setText(str);
     }

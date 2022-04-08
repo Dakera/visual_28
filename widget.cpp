@@ -1,5 +1,4 @@
 #include "widget.h"
-#include <QHBoxLayout>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -33,11 +32,11 @@ Widget::Widget(QWidget *parent)
 
     // связи
     connect(calcbutton, SIGNAL(clicked(bool)), // связь клика и +1
-    edit1, SLOT(add_one()) );
+        edit1, SLOT(add_one()) );
     connect(edit1, SIGNAL(tick_signal()), // связь функции и +1 для второго поля (когда вызывается функция tick_signal, второе поле +1)
-    edit2, SLOT(add_one()) );
-    connect(exitbutton, SIGNAL(clicked(bool)),
-    this, SLOT(close()) );
+        edit2, SLOT(add_one()) );
+    connect(exitbutton, SIGNAL(clicked(bool)), // связь кнопки выхода
+        this, SLOT(close()) );
 }
 
 Widget::~Widget()
